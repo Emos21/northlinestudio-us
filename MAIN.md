@@ -21,7 +21,11 @@ Push to `main`. Pages rebuilds in about a minute.
 
     git push origin main
 
-## DNS (set at Hostnali, zone for northlinestudio.us)
+## DNS (Hostnali DNS Manager, zone for northlinestudio.us)
+Domain nameservers: `ns1.hostnali.net` and `ns2.hostnali.net` (Hostnali default).
+Edit records at clients.hostnali.com > Domains > northlinestudio.us > DNS Manager.
+The old custom nameservers `ns30/ns40` refuse this zone: do not switch back to them.
+
 | Type  | Host | Value                    |
 |-------|------|--------------------------|
 | A     | @    | 185.199.108.153          |
@@ -30,9 +34,15 @@ Push to `main`. Pages rebuilds in about a minute.
 | A     | @    | 185.199.111.153          |
 | CNAME | www  | emos21.github.io         |
 
-Remove any other A, AAAA or CNAME records on `@` and `www`. Keep MX and TXT
-records (email for info@northlinestudio.us depends on them).
-After DNS resolves: repo Settings > Pages > tick Enforce HTTPS.
+No MX records yet: mail to info@northlinestudio.us bounces until email is set up.
+Keep any MX and TXT records added later; do not add AAAA or other A/CNAME records on `@`/`www`.
+
+## HTTPS
+Certificate is issued by GitHub (Let's Encrypt) and Enforce HTTPS is on (state on 2026-11-12:
+approved, expires 2027-02-10). If the Pages settings page sits at "DNS Check in Progress" for
+more than about an hour, remove the custom domain and add it back (API: PUT
+repos/Emos21/northlinestudio-us/pages with cname null, then cname northlinestudio.us). GitHub
+commits "Delete CNAME" and "Create CNAME" to `main` when you do this: pull before committing.
 
 ## How the static site was made
 The original was PHP. `tools/convert.sh <source-dir>` renders each page with PHP CLI,
