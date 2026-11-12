@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # One-off conversion of the PHP site to static HTML.
-# usage: tools/convert.sh [source-dir]   (default ~/polaris/northline-studio)
-# Never copies demo/ (private prospect pages), includes/ or .htaccess.
+# usage: tools/convert.sh <source-dir>
+# Copies only the pages and asset folders named below.
 set -euo pipefail
-SRC="${1:-$HOME/polaris/northline-studio}"
+SRC="${1:?usage: tools/convert.sh <source-dir>}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 PAGES="index services packages work about contact legal"
 

@@ -35,9 +35,13 @@ for p in $PAGES; do
 done
 [ $missing = 0 ] && ok "all local links and assets resolve" || bad "broken local links"
 
-# 4. private material must not be deployable
-for d in demo includes; do [ -e "$d" ] && bad "$d/ present (private)" || ok "no $d/"; done
-[ -e .htaccess ] && bad ".htaccess present" || ok "no .htaccess"
+# 4. only known top-level entries are tracked (nothing private can slip into the public repo)
+ALLOWED=" .nojekyll 404.html CNAME MAIN.md about.html assets contact.html index.html legal.html manifest.webmanifest packages.html robots.txt services.html sitemap.xml sw.js tests tools work.html "
+unexpected=0
+for e in $(git ls-files | cut -d/ -f1 | sort -u); do
+  case "$ALLOWED" in *" $e "*) ;; google*.html) ;; *) echo "      unexpected tracked entry: $e"; unexpected=1 ;; esac
+done
+[ $unexpected = 0 ] && ok "tracked entries are all on the allowlist" || bad "unexpected tracked entries"
 
 # 5. Pages config
 [ "$(cat CNAME)" = "northlinestudio.us" ] && ok "CNAME" || bad "CNAME"

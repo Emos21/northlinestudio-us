@@ -35,18 +35,18 @@ records (email for info@northlinestudio.us depends on them).
 After DNS resolves: repo Settings > Pages > tick Enforce HTTPS.
 
 ## How the static site was made
-The original is PHP (`~/polaris/northline-studio`). `tools/convert.sh` renders each
-page with PHP CLI, rewrites `.php` links to `.html`, copies assets. It never copies
-`demo/` (private prospect pages), `includes/` or `.htaccess`. Future edits go
-straight into the HTML and CSS in this repo; do not re-run convert.sh over edits.
+The original was PHP. `tools/convert.sh <source-dir>` renders each page with PHP CLI,
+rewrites `.php` links to `.html` and copies the assets. It copies only the pages and
+asset folders named in the script. Future edits go straight into the HTML and CSS in
+this repo; do not re-run convert.sh over edits.
 
 Two server features became client-side (`assets/js/static-forms.js`):
 - Enquiry form: opens a WhatsApp message with the fields filled in (was PHP `mail()`).
 - `?src=G4` attribution: tags every WhatsApp first message with `(G4)`.
 
-Not carried over: `.htaccess` redirects and caching, `demo/` routes, the footer
-year is fixed at the build year. The footer newsletter box is cosmetic (never sent anywhere).
-Old `.php` URLs return 404 on Pages.
+Not carried over: `.htaccess` redirects and caching. The footer year is fixed at the
+build year. The footer newsletter box is cosmetic (never sent anywhere).
+Old `.php` URLs are caught by `404.html`, which forwards them to the `.html` page.
 
 ## Current state
 See `logfile.md`.
