@@ -20,16 +20,17 @@ for p in $PAGES; do
 done
 
 # 2. no PHP left anywhere in the deployable files
-if grep -rn -E '\.php|<\?php|<\?=' --include=*.html --include=*.js --include=*.xml --include=*.webmanifest --include=sw.js . 2>/dev/null | grep -v -E '^\./(_raw|tools|tests)/' ; then
+if grep -rn -E '\.php|<\?php|<\?=' --include=*.html --include=*.js --include=*.xml --include=*.webmanifest --include=sw.js . 2>/dev/null | grep -v -E '^\./(_raw|tools|tests)/|^\./404\.html:' ; then
   bad "PHP reference found in deployable files"
 else ok "no PHP references"; fi
 
 # 3. every local href/src resolves to a file
 missing=0
-for p in $PAGES; do
+for p in $PAGES 404; do
   while IFS= read -r ref; do
     f="${ref%%[?#]*}"
-    case "$f" in ''|http*|mailto:*|tel:*|//*|data:*|javascript:*|*"'"*|*'+'*|*'{'*) continue ;; esac
+    case "$f" in http*|mailto:*|tel:*|//*|data:*|javascript:*|*"'"*|*'+'*|*'{'*) continue ;; esac
+    f="${f#/}"; [ -z "$f" ] && f=index.html
     [ -e "$f" ] || { echo "      $p.html -> $ref not found"; missing=1; }
   done < <(grep -o -E '(href|src)="[^"]+"' "$p.html" | sed -E 's/^(href|src)="//; s/"$//' | sort -u)
 done
@@ -52,6 +53,16 @@ grep -q 'id="enquiry-form"' contact.html && ok "enquiry form wired" || bad "enqu
 grep -q 'method="post"' contact.html && bad "contact form still posts to a server" || ok "no server post"
 for p in $PAGES; do grep -q 'assets/js/static-forms.js' "$p.html" || bad "$p.html lacks static-forms.js"; done
 node --check assets/js/static-forms.js 2>/dev/null && ok "static-forms.js parses" || bad "static-forms.js syntax"
+
+# 6b. custom 404: must work at any depth, stay out of the index, forward old .php links
+if [ -s 404.html ]; then
+  grep -q 'name="robots" content="noindex"' 404.html && ok "404 noindex" || bad "404 missing noindex"
+  grep -q 'rel="canonical"' 404.html && bad "404 must not have a canonical" || ok "404 no canonical"
+  if grep -n -o -E '(href|src)="[^/h#mt][^"]*"' 404.html | grep -v -E 'href="(mailto|tel):' ; then bad "404 has relative paths (breaks at /a/b/c)"; else ok "404 paths are root-absolute"; fi
+  grep -q '\.php' 404.html && grep -q 'location.replace' 404.html && ok "404 forwards old .php links" || bad "404 .php forwarding missing"
+  grep -q 'prefers-reduced-motion' 404.html && ok "404 respects reduced motion" || bad "404 reduced motion"
+  grep -q '—' 404.html && bad "404 contains an em dash" || ok "404 no em dash"
+else bad "404.html missing"; fi
 
 # 7. sitemap lists only .html pages, once each
 [ "$(grep -c '<loc>' sitemap.xml)" = 7 ] && ok "sitemap 7 urls" || bad "sitemap url count"

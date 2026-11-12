@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found | Northline Studio</title>
+<meta name="description" content="This page could not be found. Head back to the Northline Studio home page or message us on WhatsApp.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#3E3768">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css?v=15">
+<style>
+  /* 404 page: reuses site tokens and the hero grid; only the pieces below are new */
+  .nf{align-items:center;min-height:min(64vh,640px)}
+  .nf h1 .accent{white-space:nowrap}
+  .nf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .nf-links{margin-top:44px;max-width:520px}
+  .nf-links h2{font-size:.95rem;letter-spacing:0;font-weight:700;color:var(--ink-soft);margin-bottom:4px}
+  .nf-links ul{display:grid;grid-template-columns:1fr 1fr;column-gap:32px}
+  .nf-links li{border-bottom:1px solid var(--line)}
+  .nf-links a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;
+    font-family:var(--display);font-weight:700;color:var(--ink);transition:color .2s var(--ease)}
+  .nf-links a:hover{color:var(--primary)}
+  .nf-links a:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:6px}
+  .nf-links svg{width:16px;height:16px;flex:none;transition:transform .25s var(--ease)}
+  .nf-links a:hover svg{transform:translateX(4px)}
+  .nf-art{position:relative;border-radius:calc(var(--r-xl) - 10px);overflow:hidden;aspect-ratio:4/3.35;
+    background:linear-gradient(145deg,var(--primary-dk),var(--primary-dkr))}
+  .nf-art svg{position:absolute;inset:0;width:100%;height:100%}
+  .nf-num{font-family:var(--display);font-weight:800;fill:#fff}
+  .nf-tag{font-family:var(--serif);font-style:italic;font-weight:500;fill:var(--lime-soft)}
+  .nf-needle{transform-box:view-box;transform-origin:200px 167px;
+    animation:nf-swing 2.6s cubic-bezier(.22,.61,.36,1) .2s both}
+  @keyframes nf-swing{0%{transform:rotate(-52deg)}30%{transform:rotate(18deg)}
+    55%{transform:rotate(-9deg)}78%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+  @media (prefers-reduced-motion:reduce){.nf-needle{animation:none}}
+  @media (max-width:520px){.nf-links ul{grid-template-columns:1fr}.nf-links{margin-top:34px}}
+</style>
+</head>
+<body>
+
+<!-- ============================ NAV ============================ -->
+<header>
+  <div class="nav-shell">
+    <nav class="nav">
+      <a class="logo" href="/"><img src="/assets/img/logo.png" alt="Northline Studio"></a>
+      <ul class="nav-links" id="navLinks">
+                <li><a href="/services.html">Services</a></li>
+                <li><a href="/packages.html">Packages</a></li>
+                <li><a href="/work.html">Work</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+              </ul>
+      <div class="nav-right">
+        <a class="btn btn-dark nav-cta-desktop" href="https://wa.me/254743875608?text=Hi%20Northline%20Studio%2C%20I%20would%20like%20a%20website%20for%20my%20business.">WhatsApp Us</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ==================== MOBILE MENU (premium slide-in) ==================== -->
+<div class="m-backdrop" id="mBackdrop" hidden></div>
+<aside class="m-menu" id="mobileMenu" aria-hidden="true" aria-label="Site menu">
+  <div class="m-menu__top">
+    <a class="logo" href="/" aria-label="Northline Studio home"><img src="/assets/img/logo.png" alt="Northline Studio"></a>
+    <button class="m-menu__close" id="menuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav class="m-menu__nav" aria-label="Primary">
+    <a href="/"><span>Home</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></a>
+        <a href="/services.html"><span>Services</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></a>
+        <a href="/packages.html"><span>Packages</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></a>
+        <a href="/work.html"><span>Work</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></a>
+        <a href="/about.html"><span>About</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></a>
+        <a href="/contact.html"><span>Contact</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></a>
+      </nav>
+  <div class="m-menu__foot">
+    <a class="btn btn-dark m-menu__cta" href="https://wa.me/254743875608?text=Hi%20Northline%20Studio%2C%20I%20would%20like%20a%20website%20for%20my%20business.">WhatsApp Us</a>
+    <a class="m-menu__mail" href="mailto:info@northlinestudio.us">info@northlinestudio.us</a>
+  </div>
+</aside>
+<script>
+(function(){
+  var t=document.getElementById('menuToggle'), m=document.getElementById('mobileMenu'),
+      b=document.getElementById('mBackdrop'), c=document.getElementById('menuClose');
+  if(!t||!m||!b) return;
+  function openMenu(){
+    b.hidden=false;
+    requestAnimationFrame(function(){ b.classList.add('show'); m.classList.add('open'); });
+    document.body.classList.add('menu-open');
+    t.setAttribute('aria-expanded','true'); m.setAttribute('aria-hidden','false');
+    var f=m.querySelector('.m-menu__nav a'); if(f) f.focus();
+  }
+  function closeMenu(){
+    m.classList.remove('open'); b.classList.remove('show');
+    document.body.classList.remove('menu-open');
+    t.setAttribute('aria-expanded','false'); m.setAttribute('aria-hidden','true');
+    setTimeout(function(){ if(!m.classList.contains('open')) b.hidden=true; }, 420);
+    t.focus();
+  }
+  t.addEventListener('click', openMenu);
+  c.addEventListener('click', closeMenu);
+  b.addEventListener('click', closeMenu);
+  Array.prototype.forEach.call(m.querySelectorAll('a'), function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && m.classList.contains('open')) closeMenu(); });
+})();
+</script>
+
+<main id="top">
+
+  <div class="wrap hero nf">
+    <div>
+      <span class="eyebrow"><span class="nf-sr">Error </span>404 Page not found</span>
+      <h1>That page is <span class="accent underlined">off the map</span></h1>
+      <p class="lead">The link may be old, or the address may have a typo. Head back home, or message us and we will point you to the right place.</p>
+      <div class="hero-actions">
+        <a class="btn btn-dark" href="/">
+          Back to home
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a class="btn btn-outline" href="https://wa.me/254743875608?text=Hi%20Northline%20Studio%2C%20I%20followed%20a%20link%20on%20your%20site%20and%20could%20not%20find%20the%20page." rel="noopener">WhatsApp Us</a>
+      </div>
+
+      <nav class="nf-links" aria-label="Pages you might be looking for">
+        <h2>Or go straight to</h2>
+        <ul>
+          <li><a href="/services.html"><span>Services</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          <li><a href="/packages.html"><span>Packages</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          <li><a href="/work.html"><span>Work</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          <li><a href="/about.html"><span>About</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          <li><a href="/contact.html"><span>Contact</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-frame">
+        <div class="nf-art">
+        <svg viewBox="0 0 400 335" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="#fff">
+            <circle cx="200" cy="167" r="150" stroke-opacity=".06"/>
+            <circle cx="200" cy="167" r="112" stroke-opacity=".08"/>
+          </g>
+          <text class="nf-num" x="76" y="229" font-size="176" text-anchor="middle">4</text>
+          <text class="nf-num" x="324" y="229" font-size="176" text-anchor="middle">4</text>
+          <circle cx="200" cy="167" r="55" fill="none" stroke="#fff" stroke-width="14"/>
+          <g stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-opacity=".55">
+            <line x1="200" y1="124" x2="200" y2="131"/><line x1="200" y1="203" x2="200" y2="210"/>
+            <line x1="157" y1="167" x2="164" y2="167"/><line x1="236" y1="167" x2="243" y2="167"/>
+          </g>
+          <g class="nf-needle">
+            <polygon points="200,127 208,167 192,167" fill="#C08552"/>
+            <polygon points="192,167 208,167 200,207" fill="#fff" fill-opacity=".72"/>
+            <circle cx="200" cy="167" r="5.5" fill="#1a0f4d" stroke="#fff" stroke-width="2"/>
+          </g>
+          <text class="nf-tag" x="200" y="296" font-size="21" text-anchor="middle">Design that points north</text>
+        </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="about">
+        <a class="logo" href="/"><img src="/assets/img/logo-white.png" alt="Northline Studio"></a>
+        <p>Design that points north. Websites, brand design, content and ads, all under one roof.</p>
+        <form class="newsletter" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('button').textContent='Subscribed';">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+          <button class="btn btn-lime" type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about.html">About us</a></li>
+          <li><a href="/#process">How we work</a></li>
+          <li><a href="/work.html">Our work</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/packages.html">Websites, hosting & domain</a></li>
+          <li><a href="/services.html">Brand & graphic design</a></li>
+          <li><a href="/services.html">Social media & ads</a></li>
+          <li><a href="/services.html">SEO & local search</a></li>
+          <li><a href="/packages.html">All packages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get in touch</h3>
+        <ul>
+                    <li><a href="https://wa.me/254743875608?text=Hi%20Northline%20Studio%2C%20I%20would%20like%20a%20website%20for%20my%20business." rel="noopener">WhatsApp +254 743 875 608</a></li>
+                    <li><a href="mailto:info@northlinestudio.us">info@northlinestudio.us</a></li>
+          <li>Nairobi, Kenya</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Northline Studio. All rights reserved.</span>
+      <span><a href="/legal.html#privacy">Privacy policy</a> &nbsp;&middot;&nbsp; <a href="/legal.html#terms">Terms of service</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Links from the old PHP site (/services.php) go to the new page (/services.html). */
+(function () {
+  var m = location.pathname.match(/^\/(index|services|packages|work|about|contact|legal)\.php$/i);
+  if (!m) return;
+  var name = m[1].toLowerCase();
+  location.replace((name === 'index' ? '/' : '/' + name + '.html') + location.search + location.hash);
+})();
+</script>
+<script src="/assets/js/static-forms.js"></script>
+</body>
+</html>
